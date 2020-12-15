@@ -23,8 +23,7 @@ public class Dynamic {
         if(sizeOfArray < 0 ){
             sizeOfArray = 1;
         }
-        else{
-            if (index > sizeOfArray- 1){
+        else if (index > sizeOfArray- 1){
                 sizeOfArray *=2;
                 int [] new_array = new int[sizeOfArray];
                 int i = 0;
@@ -35,7 +34,9 @@ public class Dynamic {
                 array = new_array;
                 array[index] = item;
                 available_index ++;
-            }
+        }else{
+            array[index] = item;
+            available_index ++;
         }
     }
     public void append(int item){
