@@ -19,9 +19,13 @@ public class Dynamic {
         available_index = 0;
         array = new int[sizeOfArray];
     }
-    public void add(int item , int index ){
+    public void add(int item , int index )  throws Exception{
         if(sizeOfArray < 0 ){
             sizeOfArray = 1;
+        }
+        else if ( index < 0){
+            throw  new Exception(" Index is less than 0");
+
         }
         else if (index > sizeOfArray- 1){
                 sizeOfArray *=2;
@@ -39,7 +43,7 @@ public class Dynamic {
             available_index ++;
         }
     }
-    public void append(int item){
+    public void append(int item) throws Exception {
         add(item ,available_index );
     }
     public void pop(){
