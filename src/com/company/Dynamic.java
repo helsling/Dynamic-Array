@@ -1,25 +1,28 @@
 package com.company;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 /*
 Dynamic array is an indexable array that you can change the size of which can shrink and expand.
  */
-public class Dynamic {
+public class Dynamic < type extends Comparable> {
     private int sizeOfArray ;
     private int available_index ;
-    private int[] array ;
+    private type[] array;
     public Dynamic(){
         sizeOfArray = 1;
         available_index = 0;
-        array = new int[sizeOfArray];
+        array = (type[]) new Comparable[sizeOfArray];
     }
     public Dynamic(int size){
         sizeOfArray = size;
         available_index = 0;
-        array = new int[sizeOfArray];
+        array = (type[])new Comparable[sizeOfArray];
     }
-    public void add(int item , int index )  throws Exception{
+    public void add(type item , int index )  throws Exception{
         if(sizeOfArray < 0 ){
             sizeOfArray = 1;
         }
@@ -29,9 +32,9 @@ public class Dynamic {
         }
         else if (index > sizeOfArray- 1){
                 sizeOfArray *=2;
-                int [] new_array = new int[sizeOfArray];
+                type[] new_array = (type[])new Comparable[sizeOfArray];
                 int i = 0;
-                for ( int num : array){
+                for ( type num : array){
                     new_array[i] = num;
                     i ++;
                 }
@@ -43,7 +46,7 @@ public class Dynamic {
             available_index ++;
         }
     }
-    public void append(int item) throws Exception {
+    public void append(type item) throws Exception {
         add(item ,available_index );
     }
     public void pop(){
@@ -51,12 +54,12 @@ public class Dynamic {
             System.out.println("Array is empty");
         }else{
             System.out.println("Item remove: " + array[available_index]);
-            array[available_index] = Integer.parseInt(null);
+            array[available_index] = null;
             available_index --;
             sizeOfArray --;
-            int[] new_array = new int[sizeOfArray];
+            type[] new_array = (type[])new Comparable[sizeOfArray];
             int i = 0;
-            for ( int num: array ){
+            for ( type num: array ){
                 new_array[i] = array[i];
                 i++;
             }
@@ -85,9 +88,9 @@ public class Dynamic {
     }
     public void sort(){
         for( int i = 1; i < array.length; i ++){
-            int current = array[i];
+            type current = array[i];
             int j = i - 1;
-            while( j >= 0 && array[j] > current ){
+            while( j >= 0 && array[j].compareTo(current) > 1 ){
                 array[j+1] = array[j];
                 j--;
             }

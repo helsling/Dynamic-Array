@@ -1,16 +1,18 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        Dynamic list = new Dynamic();
+        Dynamic<Integer> list = new Dynamic();
+        ArrayList<String> array = new ArrayList<>();
         try {
-            list.append(5);
-            list.append(3);
-            list.add(12,-1);
-            list.append(6);
-            list.append(1);
+            list.append(4);
+            list.append(2);
+            list.append(0);
+
         }
         catch (Exception error ){
             System.out.println(error.getMessage());
